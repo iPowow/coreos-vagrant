@@ -28,3 +28,9 @@ coreos:
 
         [Install]
         WantedBy=sockets.target
+        
+write_files:
+  - path: /home/root/.dockercfg
+    permissions: 0644
+    content: |
+      {"quay.io":{"auth":"<YOUR_TOKEN>","email":"YOUR EMAIL"}}
