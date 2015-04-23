@@ -31,6 +31,9 @@ Vagrant.configure("2") do |config|
   config.vm.box_version = ">= 308.0.1"
   config.vm.box_url = "http://%s.release.core-os.net/amd64-usr/current/coreos_production_vagrant.json" % $update_channel
 
+  # Change the default SSH forwarding port
+  config.vm.network :forwarded_port, guest: 22, host: 12321, id: 'ssh'
+
   config.vm.provider :vmware_fusion do |vb, override|
     override.vm.box_url = "http://%s.release.core-os.net/amd64-usr/current/coreos_production_vagrant_vmware_fusion.json" % $update_channel
   end
